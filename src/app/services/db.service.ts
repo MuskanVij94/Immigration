@@ -231,16 +231,16 @@ export class DbService {
     })
   }
 
+
+
+
   getTestimonials(){
     let queryRef = query(
       this.getQueryRef(CONSTANTS.REVIEWS_COLLECTION,'reviewStatus','addedOn', true),
-      limit(this.$DOC_LIMIT)
     )
 
     const unsub = onSnapshot(queryRef, (snapshot) => {
-      this.isTestimonialsAvailable = snapshot.size === this.$DOC_LIMIT
       this.testimonialSubject.next(snapshot.docs.map((ele) => {
-        this.testimonialLastDoc.next(ele)
         return ele.data()
       }))
       this.getWindowRef().setTimeout(() => unsub(), this.timeoutInterval * 6)

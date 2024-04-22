@@ -15,8 +15,8 @@ export class HomeComponent implements OnInit {
   @Input() inModalBool: boolean = false;
   
   enquiryForm!: FormGroup
-  galleryList: any[] = [];
-  reviewsList: any[] = [];
+  // galleryList: any[] = [];
+  // reviewsList: any[] = [];
   servicesList: any[] = [];
   visaList: any[] = []
 
@@ -38,7 +38,9 @@ export class HomeComponent implements OnInit {
       enqueryId: [doc(collection(this.firestore, "enqueries")).id],
       name: ["", [Validators.required, Validators.pattern("[a-zA-Z ]*")]],
       email: ["",[Validators.required, Validators.email] ],
-      phone: [""]
+      phone: [""],
+      query: ["" ,[Validators.required] ],
+      date:  [Timestamp.now()]
     })
   }
 
@@ -70,17 +72,17 @@ export class HomeComponent implements OnInit {
   
   getDataFromDbService(){
 
-    let visaSub = this.dbService.homeVisaSubject.subscribe((value) => {
+    let homevisaSub = this.dbService.homeVisaSubject.subscribe((value) => {
       if(value.length !== 0){
         this.visaList = value
-        this.dbService.getWindowRef().setTimeout(() => visaSub.unsubscribe(), this.dbService.timeoutInterval*60)
+        this.dbService.getWindowRef().setTimeout(() => homevisaSub.unsubscribe(), this.dbService.timeoutInterval * 6)
       }
     })
 
-    let serviceSub = this.dbService.homeServiceSubject.subscribe((value) =>{
+    let homeserviceSub = this.dbService.homeServiceSubject.subscribe((value) =>{
       if(value.length !== 0){
         this.servicesList = value
-        this.dbService.getWindowRef().setTimeout(() => serviceSub.unsubscribe(), this.dbService.timeoutInterval*60)
+        this.dbService.getWindowRef().setTimeout(() => homeserviceSub.unsubscribe(), this.dbService.timeoutInterval * 6)
       }
     })
   }
