@@ -1,16 +1,22 @@
 <app-navbar></app-navbar>
 <router-outlet></router-outlet>
 <app-footer></app-footer>
-<div *ngIf="!loader"  style="position: fixed; right: 10px; bottom: 10px; z-index: 1;">
-  <div class="d-flex flex-row flex-lg-column  rounded" style="background-color: white;">
-    <a href="{{ social?.whatsappNumber }}" target="_blank" class="btn mx-1">
-      <i class="fa-brands fa-whatsapp text-success fa-xl"></i>
+<div *ngIf="!loader"  style="position: fixed; left: 10px; bottom: 250px; z-index: 1;">
+  <div class="d-flex flex-row flex-lg-column  rounded" style="background-color: white; width: 40px;">
+    <a  target="_blank" class="btn">
+      <i class="fa-brands fa-whatsapp text-success "></i>
     </a>
-    <a href="{{ social?.facebook }}" target="_blank" class="btn mx-1 ">
-      <i class="fa-brands fa-facebook text-primary fa-xl"></i>
+    <a  target="_blank" class="btn ">
+      <i class="fa-brands fa-facebook text-primary "></i>
     </a>
-    <!-- <a href="{{ social?.youtube }}" target="_blank" class="btn  mx-1 ">
-      <i class="fa-brands fa-youtube text-danger fa-xl"></i>
-    </a> -->
+    <a  target="_blank" class="btn  ">
+      <i class="fa-brands fa-youtube text-danger "></i>
+    </a>
+    <a  target="_blank" class="btn">
+      <i class="fa-brands fa-linkedin text-primary "></i>
+    </a>
+    <a  target="_blank" class="btn ">
+      <i class="fa-brands fa-twitter text-secondary"></i>
+    </a>
   </div>
 </div>
